@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cycle Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>🌸 Cycle Tracker</h1>
+
+    <label>Period Start Date:</label>
+    <input type="date" id="startDate">
+
+    <p id="cycleInfo"></p>
+
+    <label>Productivity:</label>
+    <input type="range" id="prod" min="1" max="5" value="3">
+
+    <label>Creativity:</label>
+    <input type="range" id="crea" min="1" max="5" value="3">
+
+    <button onclick="save()">Save Entry</button>
+
+    <h2>📊 Logs</h2>
+    <div id="logs"></div>
+
+    <h2>🔮 Prediction</h2>
+    <div id="prediction"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
