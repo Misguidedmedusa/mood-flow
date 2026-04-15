@@ -21,23 +21,29 @@ body {
 
 /* SLIDER STYLE */
 input[type="range"] {
+  -webkit-appearance: none;
   width: 100%;
   height: 10px;
   border-radius: 10px;
   outline: none;
-  appearance: none;
-  background: #ccc;
-  transition: background 0.3s ease;
+  background: #ddd;
+}
+
+/* Track (Chrome fix) */
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 10px;
+  border-radius: 10px;
 }
 
 /* Thumb */
 input[type="range"]::-webkit-slider-thumb {
-  appearance: none;
+  -webkit-appearance: none;
   height: 18px;
   width: 18px;
   border-radius: 50%;
   background: white;
-  border: 2px solid #999;
+  border: 2px solid #888;
+  margin-top: -4px;
   cursor: pointer;
 }
 
