@@ -58,6 +58,7 @@ function saveData() {
 
   displayData();
 }
+analyzeData();
 
 // Display entries
 function displayData() {
@@ -169,3 +170,4 @@ function analyzeData() {
 
   document.getElementById("analysisBox").innerText = resultText;
 }
+analyzeData();
