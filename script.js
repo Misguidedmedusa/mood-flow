@@ -1,31 +1,22 @@
-// VIBGYOR mapping
-const vibgyor = {
-  1: { name: "Violet", color: "#8e44ad" },
-  2: { name: "Indigo", color: "#5d3fd3" },
-  3: { name: "Blue", color: "#3498db" },
-  4: { name: "Green", color: "#2ecc71" },
-  5: { name: "Yellow", color: "#f1c40f" },
-  6: { name: "Orange", color: "#e67e22" },
-  7: { name: "Red", color: "#e74c3c" }
+const vibgyorColors = {
+  1: "#8e44ad", // Violet
+  2: "#5d3fd3", // Indigo
+  3: "#3498db", // Blue
+  4: "#2ecc71", // Green
+  5: "#f1c40f", // Yellow
+  6: "#e67e22", // Orange
+  7: "#e74c3c"  // Red
 };
 
-// Update text + color label
-function updateSlider(sliderId, textId) {
-  const value = document.getElementById(sliderId).value;
-  const data = vibgyor[value];
-
-  const text = document.getElementById(textId);
-  text.innerText = data.name;
-  text.style.color = data.color;
-}
-
-// Color the slider itself
+// Make slider color dynamic
 function setSliderColor(slider) {
   const value = slider.value;
-  slider.style.background = vibgyor[value].color;
+  const color = vibgyorColors[value];
+
+  slider.style.background = `linear-gradient(to right, ${color} ${value * 14}%, #ddd ${value * 14}%)`;
 }
 
-// Cycle phase logic
+// Cycle phase
 function getPhase(dayDiff) {
   if (dayDiff <= 5) return "Menstrual";
   if (dayDiff <= 13) return "Follicular";
@@ -41,7 +32,7 @@ function saveData() {
   const productivity = document.getElementById("productivity").value;
 
   if (!date || !periodStart) {
-    alert("Please enter all dates");
+    alert("Please enter all fields");
     return;
   }
 
@@ -66,7 +57,7 @@ function saveData() {
   displayData();
 }
 
-// Display data
+// Display entries
 function displayData() {
   const list = document.getElementById("entriesList");
   list.innerHTML = "";
@@ -86,24 +77,23 @@ Productivity: ${entry.productivity}`;
 }
 
 // Event listeners
-document.getElementById("creativity").addEventListener("input", (e) => {
-  updateSlider("creativity", "creativityValue");
+const creativitySlider = document.getElementById("creativity");
+const productivitySlider = document.getElementById("productivity");
+
+creativitySlider.addEventListener("input", (e) => {
   setSliderColor(e.target);
 });
 
-document.getElementById("productivity").addEventListener("input", (e) => {
-  updateSlider("productivity", "productivityValue");
+productivitySlider.addEventListener("input", (e) => {
   setSliderColor(e.target);
 });
 
 // Save button
 document.getElementById("saveBtn").addEventListener("click", saveData);
 
-// Initialize
-updateSlider("creativity", "creativityValue");
-updateSlider("productivity", "productivityValue");
+// Initialize colors
+setSliderColor(creativitySlider);
+setSliderColor(productivitySlider);
 
-setSliderColor(document.getElementById("creativity"));
-setSliderColor(document.getElementById("productivity"));
-
+// Load data
 displayData();
