@@ -113,3 +113,59 @@ function deleteEntry(index) {
 
   displayData();
 }
+function analyzeData() {
+  const data = JSON.parse(localStorage.getItem("trackerData")) || [];
+
+  if (data.length === 0) {
+    document.getElementById("analysisBox").innerText = "No data yet.";
+    return;
+  }
+
+  let phaseStats = {};
+
+  data.forEach(entry => {
+    if (!phaseStats[entry.phase]) {
+      phaseStats[entry.phase] = {
+        creativity: [],
+        productivity: []
+      };
+    }
+
+    phaseStats[entry.phase].creativity.push(Number(entry.creativity));
+    phaseStats[entry.phase].productivity.push(Number(entry.productivity));
+  });
+
+  let resultText = "";
+
+  let maxProdPhase = "";
+  let maxProd = 0;
+
+  let maxCreatPhase = "";
+  let maxCreat = 0;
+
+  for (let phase in phaseStats) {
+    let cArr = phaseStats[phase].creativity;
+    let pArr = phaseStats[phase].productivity;
+
+    let avgC = cArr.reduce((a,b)=>a+b,0) / cArr.length;
+    let avgP = pArr.reduce((a,b)=>a+b,0) / pArr.length;
+
+    resultText += `${phase} → Creativity: ${avgC.toFixed(1)}, Productivity: ${avgP.toFixed(1)}\n`;
+
+    if (avgP > maxProd) {
+      maxProd = avgP;
+      maxProdPhase = phase;
+    }
+
+    if (avgC > maxCreat) {
+      maxCreat = avgC;
+      maxCreatPhase = phase;
+    }
+  }
+
+  resultText += `\n🧠 Insight:\n`;
+  resultText += `You are most productive in ${maxProdPhase} phase.\n`;
+  resultText += `Your creativity peaks in ${maxCreatPhase} phase.`;
+
+  document.getElementById("analysisBox").innerText = resultText;
+}
