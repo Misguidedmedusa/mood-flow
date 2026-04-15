@@ -211,22 +211,43 @@ document.addEventListener("DOMContentLoaded", function () {
   saveBtn.addEventListener("click", saveData);
 
   // Analysis toggle
-  analysisBtn.addEventListener("click", () => {
-    const container = document.getElementById("analysisContainer");
+ document.addEventListener("DOMContentLoaded", function () {
 
-    if (container.style.display === "none") {
-      container.style.display = "block";
-      analyzeData();
-    } else {
-      container.style.display = "none";
-    }
+  const creativitySlider = document.getElementById("creativity");
+  const productivitySlider = document.getElementById("productivity");
+  const saveBtn = document.getElementById("saveBtn");
+  const analysisBtn = document.getElementById("analysisBtn");
+  const analysisContainer = document.getElementById("analysisContainer");
+
+  if (!creativitySlider || !productivitySlider || !saveBtn) {
+    console.error("Check HTML IDs");
+    return;
+  }
+
+  creativitySlider.addEventListener("input", (e) => {
+    setSliderColor(e.target);
   });
 
-  // Initialize sliders
+  productivitySlider.addEventListener("input", (e) => {
+    setSliderColor(e.target);
+  });
+
+  saveBtn.addEventListener("click", saveData);
+
+  if (analysisBtn && analysisContainer) {
+    analysisBtn.addEventListener("click", () => {
+      if (analysisContainer.style.display === "none" || analysisContainer.style.display === "") {
+        analysisContainer.style.display = "block";
+        analyzeData();
+      } else {
+        analysisContainer.style.display = "none";
+      }
+    });
+  }
+
   setSliderColor(creativitySlider);
   setSliderColor(productivitySlider);
 
-  // Load saved data
   displayData();
 
 });
