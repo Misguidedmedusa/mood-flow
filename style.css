@@ -1,23 +1,9 @@
 body {
-  font-family: 'Segoe UI', sans-serif;
-  margin: 0;
-
-  background-image: url("background.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
 }
 
-.tracker-container {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(12px);
-  padding: 25px;
-  margin: 60px auto;
-  width: 350px;
-  border-radius: 20px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-  text-align: center;
-}
 
 /* SLIDER STYLE */
 input[type="range"] {
@@ -66,4 +52,62 @@ li {
   margin: 8px;
   padding: 10px;
   border-radius: 10px;
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+
+  background-image: url("./background.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.tracker-container {
+  background: rgba(200, 255, 240, 0.6);
+  backdrop-filter: blur(15px);
+  padding: 25px;
+  margin: 60px auto;
+  width: 350px;
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  text-align: center;
+}
+
+h2 {
+  font-weight: 600;
+}
+
+h3 {
+  font-weight: 500;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+}
+
+li {
+  list-style: none;
+  background: rgba(255,255,255,0.6);
+  margin: 10px;
+  padding: 12px;
+  border-radius: 12px;
+  position: relative;
+}
+
+.delete-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background: #ff6b81;
+  border: none;
+  color: white;
+  border-radius: 8px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: #ff4757;
 }
