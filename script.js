@@ -20,12 +20,14 @@ function updateSlider(sliderId, textId) {
 }
 
 // Event listeners
-document.getElementById("creativity").addEventListener("input", () => {
+document.getElementById("creativity").addEventListener("input", (e) => {
   updateSlider("creativity", "creativityValue");
+  setSliderColor(e.target);
 });
 
-document.getElementById("productivity").addEventListener("input", () => {
+document.getElementById("productivity").addEventListener("input", (e) => {
   updateSlider("productivity", "productivityValue");
+  setSliderColor(e.target);
 });
 
 // Initialize on load
@@ -89,3 +91,20 @@ function displayData() {
 // Load on start
 displayData();
 document.getElementById("saveBtn").addEventListener("click", saveData);
+function setSliderColor(slider) {
+  const value = slider.value;
+
+  const colors = {
+    1: "#8e44ad",
+    2: "#5d3fd3",
+    3: "#3498db",
+    4: "#2ecc71",
+    5: "#f1c40f",
+    6: "#e67e22",
+    7: "#e74c3c"
+  };
+
+  slider.style.background = colors[value];
+}
+setSliderColor(document.getElementById("creativity"));
+setSliderColor(document.getElementById("productivity"));
