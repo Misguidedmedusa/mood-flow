@@ -80,6 +80,7 @@ function displayData() {
 
     list.appendChild(li);
   });
+  analyzeData();
 }
 
 
