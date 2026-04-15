@@ -1,22 +1,30 @@
 body {
-  font-family: Arial, sans-serif;
-  background: #fff7fb;
-  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #ffe6f0, #e6f7ff);
+  background-image: url('https://www.transparenttextures.com/patterns/floral.png');
+  min-height: 100vh;
+  margin: 0;
 }
 
 .tracker-container {
-  background: #ffffffcc;
-  padding: 20px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 25px;
   margin: 50px auto;
-  width: 300px;
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  width: 350px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  text-align: center;
 }
 
 input[type="range"] {
   width: 100%;
   margin-top: 10px;
+  height: 8px;
+  border-radius: 5px;
+  outline: none;
 }
+
 button {
   background-color: #f8c8dc;
   border: none;
@@ -27,4 +35,12 @@ button {
 
 button:hover {
   background-color: #f4a6c1;
+}
+
+li {
+  list-style: none;
+  background: #ffffffaa;
+  margin: 8px;
+  padding: 10px;
+  border-radius: 10px;
 }
