@@ -104,3 +104,12 @@ setSliderColor(productivitySlider);
 
 // Load data
 displayData();
+function deleteEntry(index) {
+  let data = JSON.parse(localStorage.getItem("trackerData")) || [];
+
+  data.splice(index, 1);
+
+  localStorage.setItem("trackerData", JSON.stringify(data));
+
+  displayData();
+}
