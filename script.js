@@ -58,7 +58,6 @@ function saveData() {
 
   displayData();
 }
-analyzeData();
 
 // Display entries
 function displayData() {
@@ -80,7 +79,6 @@ function displayData() {
 
     list.appendChild(li);
   });
-  analyzeData();
 }
 
 
@@ -165,10 +163,19 @@ function analyzeData() {
     }
   }
 
-  resultText += `\n🧠 Insight:\n`;
+resultText += `\n✨ Insight:\n`;
   resultText += `You are most productive in ${maxProdPhase} phase.\n`;
   resultText += `Your creativity peaks in ${maxCreatPhase} phase.`;
 
   document.getElementById("analysisBox").innerText = resultText;
 }
-analyzeData();
+document.getElementById("analysisBtn").addEventListener("click", () => {
+  const container = document.getElementById("analysisContainer");
+
+  if (container.style.display === "none") {
+    container.style.display = "block";
+    analyzeData();
+  } else {
+    container.style.display = "none";
+  }
+});
