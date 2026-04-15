@@ -169,7 +169,20 @@ resultText += `\n✨ Insight:\n`;
 
   document.getElementById("analysisBox").innerText = resultText;
 }
-document.getElementById("analysisBtn").addEventListener("click", () => {
+document.addEventListener("DOMContentLoaded", function () {
+
+  document.getElementById("analysisBtn").addEventListener("click", () => {
+    const container = document.getElementById("analysisContainer");
+
+    if (container.style.display === "none") {
+      container.style.display = "block";
+      analyzeData();
+    } else {
+      container.style.display = "none";
+    }
+  });
+
+});
   const container = document.getElementById("analysisContainer");
 
   if (container.style.display === "none") {
