@@ -171,7 +171,6 @@ resultText += `\n✨ Insight:\n`;
 }
 document.addEventListener("DOMContentLoaded", function () {
 
-  document.getElementById("analysisBtn").addEventListener("click", () => {
     const container = document.getElementById("analysisContainer");
 
     if (container.style.display === "none") {
