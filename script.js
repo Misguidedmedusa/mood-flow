@@ -191,3 +191,42 @@ document.addEventListener("DOMContentLoaded", function () {
     container.style.display = "none";
   }
 });
+document.addEventListener("DOMContentLoaded", function () {
+
+  const creativitySlider = document.getElementById("creativity");
+  const productivitySlider = document.getElementById("productivity");
+  const saveBtn = document.getElementById("saveBtn");
+  const analysisBtn = document.getElementById("analysisBtn");
+
+  // Slider color
+  creativitySlider.addEventListener("input", (e) => {
+    setSliderColor(e.target);
+  });
+
+  productivitySlider.addEventListener("input", (e) => {
+    setSliderColor(e.target);
+  });
+
+  // Save button
+  saveBtn.addEventListener("click", saveData);
+
+  // Analysis toggle
+  analysisBtn.addEventListener("click", () => {
+    const container = document.getElementById("analysisContainer");
+
+    if (container.style.display === "none") {
+      container.style.display = "block";
+      analyzeData();
+    } else {
+      container.style.display = "none";
+    }
+  });
+
+  // Initialize sliders
+  setSliderColor(creativitySlider);
+  setSliderColor(productivitySlider);
+
+  // Load saved data
+  displayData();
+
+});
