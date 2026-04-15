@@ -1,27 +1,19 @@
 body {
-  font-family: Arial;
-  background: linear-gradient(to right, #fbcfe8, #bae6fd);
-  display: flex;
-  justify-content: center;
-  padding: 20px;
+  font-family: Arial, sans-serif;
+  background: #fff7fb;
+  text-align: center;
 }
 
-.container {
-  background: white;
+.tracker-container {
+  background: #ffffffcc;
   padding: 20px;
-  border-radius: 12px;
-  width: 350px;
+  margin: 50px auto;
+  width: 300px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-input, button {
+input[type="range"] {
   width: 100%;
-  margin: 8px 0;
-}
-
-button {
-  background: #ec4899;
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 6px;
+  margin-top: 10px;
 }
