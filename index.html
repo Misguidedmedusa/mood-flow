@@ -1,29 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mood Flow Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
 <div class="tracker-container">
   <h2>Daily Tracker</h2>
 
-  <!-- Creativity Slider -->
-  <label for="creativity">Creativity</label>
+  <!-- Creativity -->
+  <label>Creativity</label>
   <input type="range" id="creativity" min="1" max="7" value="4">
   <p id="creativityValue">Green</p>
 
-  <!-- Productivity Slider -->
-  <label for="productivity">Productivity</label>
+  <!-- Productivity -->
+  <label>Productivity</label>
   <input type="range" id="productivity" min="1" max="7" value="4">
   <p id="productivityValue">Green</p>
+
+  <h3>Track Your Day</h3>
+
+  <!-- Date -->
+  <label>Date</label>
+  <input type="date" id="date">
+
+  <!-- Period -->
+  <label>Last Period Start</label>
+  <input type="date" id="periodStart">
+
+  <br><br>
+
+  <button id="saveBtn">Save Entry</button>
+
+  <h3>Saved Entries</h3>
+  <ul id="entriesList"></ul>
 </div>
-<h3>Track Your Day</h3>
 
-<!-- Date -->
-<label for="date">Date</label>
-<input type="date" id="date">
-
-<!-- Period Start Date -->
-<label for="periodStart">Last Period Start</label>
-<input type="date" id="periodStart">
-
-<br><br>
-
-<button id="saveBtn">Save Entry</button>
-
-<h3>Saved Entries</h3>
-<ul id="entriesList"></ul>
+<script src="script.js"></script>
+</body>
+</html>
