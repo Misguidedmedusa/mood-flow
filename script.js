@@ -1,18 +1,18 @@
+// VIBGYOR colors
 const vibgyorColors = {
-  1: "#8e44ad", // Violet
-  2: "#5d3fd3", // Indigo
-  3: "#3498db", // Blue
-  4: "#2ecc71", // Green
-  5: "#f1c40f", // Yellow
-  6: "#e67e22", // Orange
-  7: "#e74c3c"  // Red
+  1: "#8e44ad",
+  2: "#5d3fd3",
+  3: "#3498db",
+  4: "#2ecc71",
+  5: "#f1c40f",
+  6: "#e67e22",
+  7: "#e74c3c"
 };
 
-// Make slider color dynamic
+// Slider color
 function setSliderColor(slider) {
   const value = slider.value;
   const color = vibgyorColors[value];
-
   const percent = (value - 1) / 6 * 100;
 
   slider.style.background = `linear-gradient(to right, ${color} ${percent}%, #ddd ${percent}%)`;
@@ -44,12 +44,7 @@ function saveData() {
 
   const phase = getPhase(diffDays);
 
-  const entry = {
-    date,
-    creativity,
-    productivity,
-    phase
-  };
+  const entry = { date, creativity, productivity, phase };
 
   let data = JSON.parse(localStorage.getItem("trackerData")) || [];
   data.push(entry);
@@ -81,43 +76,21 @@ function displayData() {
   });
 }
 
-
-
-// Event listeners
-const creativitySlider = document.getElementById("creativity");
-const productivitySlider = document.getElementById("productivity");
-
-creativitySlider.addEventListener("input", (e) => {
-  setSliderColor(e.target);
-});
-
-productivitySlider.addEventListener("input", (e) => {
-  setSliderColor(e.target);
-});
-
-// Save button
-document.getElementById("saveBtn").addEventListener("click", saveData);
-
-// Initialize colors
-setSliderColor(creativitySlider);
-setSliderColor(productivitySlider);
-
-// Load data
-displayData();
+// Delete entry
 function deleteEntry(index) {
   let data = JSON.parse(localStorage.getItem("trackerData")) || [];
-
   data.splice(index, 1);
-
   localStorage.setItem("trackerData", JSON.stringify(data));
-
   displayData();
 }
+
+// Analysis
 function analyzeData() {
   const data = JSON.parse(localStorage.getItem("trackerData")) || [];
+  const box = document.getElementById("analysisBox");
 
-  if (data.length === 0) {
-    document.getElementById("analysisBox").innerText = "No data yet.";
+  if (!data.length) {
+    box.innerText = "No data yet.";
     return;
   }
 
@@ -125,23 +98,16 @@ function analyzeData() {
 
   data.forEach(entry => {
     if (!phaseStats[entry.phase]) {
-      phaseStats[entry.phase] = {
-        creativity: [],
-        productivity: []
-      };
+      phaseStats[entry.phase] = { creativity: [], productivity: [] };
     }
 
     phaseStats[entry.phase].creativity.push(Number(entry.creativity));
     phaseStats[entry.phase].productivity.push(Number(entry.productivity));
   });
 
-  let resultText = "";
-
-  let maxProdPhase = "";
-  let maxProd = 0;
-
-  let maxCreatPhase = "";
-  let maxCreat = 0;
+  let result = "";
+  let maxProd = 0, maxProdPhase = "";
+  let maxCreat = 0, maxCreatPhase = "";
 
   for (let phase in phaseStats) {
     let cArr = phaseStats[phase].creativity;
@@ -150,7 +116,7 @@ function analyzeData() {
     let avgC = cArr.reduce((a,b)=>a+b,0) / cArr.length;
     let avgP = pArr.reduce((a,b)=>a+b,0) / pArr.length;
 
-    resultText += `${phase} → Creativity: ${avgC.toFixed(1)}, Productivity: ${avgP.toFixed(1)}\n`;
+    result += `${phase} → Creativity: ${avgC.toFixed(1)}, Productivity: ${avgP.toFixed(1)}\n`;
 
     if (avgP > maxProd) {
       maxProd = avgP;
@@ -163,55 +129,15 @@ function analyzeData() {
     }
   }
 
-resultText += `\n✨ Insight:\n`;
-  resultText += `You are most productive in ${maxProdPhase} phase.\n`;
-  resultText += `Your creativity peaks in ${maxCreatPhase} phase.`;
+  result += `\n✨ Insight:\n`;
+  result += `You are most productive in ${maxProdPhase} phase.\n`;
+  result += `Your creativity peaks in ${maxCreatPhase} phase.`;
 
-  document.getElementById("analysisBox").innerText = resultText;
+  box.innerText = result;
 }
+
+// ✅ MAIN INITIALIZATION (ONLY ONE BLOCK)
 document.addEventListener("DOMContentLoaded", function () {
-
-    const container = document.getElementById("analysisContainer");
-
-    if (container.style.display === "none") {
-      container.style.display = "block";
-      analyzeData();
-    } else {
-      container.style.display = "none";
-    }
-  });
-
-});
-  const container = document.getElementById("analysisContainer");
-
-  if (container.style.display === "none") {
-    container.style.display = "block";
-    analyzeData();
-  } else {
-    container.style.display = "none";
-  }
-});
-document.addEventListener("DOMContentLoaded", function () {
-
-  const creativitySlider = document.getElementById("creativity");
-  const productivitySlider = document.getElementById("productivity");
-  const saveBtn = document.getElementById("saveBtn");
-  const analysisBtn = document.getElementById("analysisBtn");
-
-  // Slider color
-  creativitySlider.addEventListener("input", (e) => {
-    setSliderColor(e.target);
-  });
-
-  productivitySlider.addEventListener("input", (e) => {
-    setSliderColor(e.target);
-  });
-
-  // Save button
-  saveBtn.addEventListener("click", saveData);
-
-  // Analysis toggle
- document.addEventListener("DOMContentLoaded", function () {
 
   const creativitySlider = document.getElementById("creativity");
   const productivitySlider = document.getElementById("productivity");
@@ -219,11 +145,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const analysisBtn = document.getElementById("analysisBtn");
   const analysisContainer = document.getElementById("analysisContainer");
 
-  if (!creativitySlider || !productivitySlider || !saveBtn) {
-    console.error("Check HTML IDs");
-    return;
-  }
-
+  // Sliders
   creativitySlider.addEventListener("input", (e) => {
     setSliderColor(e.target);
   });
@@ -232,8 +154,10 @@ document.addEventListener("DOMContentLoaded", function () {
     setSliderColor(e.target);
   });
 
+  // Save
   saveBtn.addEventListener("click", saveData);
 
+  // Analysis toggle
   if (analysisBtn && analysisContainer) {
     analysisBtn.addEventListener("click", () => {
       if (analysisContainer.style.display === "none" || analysisContainer.style.display === "") {
@@ -245,9 +169,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Init
   setSliderColor(creativitySlider);
   setSliderColor(productivitySlider);
-
   displayData();
 
 });
