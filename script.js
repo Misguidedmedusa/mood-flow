@@ -66,17 +66,22 @@ function displayData() {
 
   const data = JSON.parse(localStorage.getItem("trackerData")) || [];
 
-  data.forEach((entry) => {
+  data.forEach((entry, index) => {
     const li = document.createElement("li");
 
-    li.innerText = `${entry.date}
-Phase: ${entry.phase}
-Creativity: ${entry.creativity}
-Productivity: ${entry.productivity}`;
+    li.innerHTML = `
+      <button class="delete-btn" onclick="deleteEntry(${index})">X</button>
+      ${entry.date}<br>
+      Phase: ${entry.phase}<br>
+      Creativity: ${entry.creativity}<br>
+      Productivity: ${entry.productivity}
+    `;
 
     list.appendChild(li);
   });
 }
+
+
 
 // Event listeners
 const creativitySlider = document.getElementById("creativity");
