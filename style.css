@@ -111,3 +111,6 @@ li {
 .delete-btn:hover {
   background: #ff4757;
 }
+h1, h2, h3, label, button {
+  font-family: 'Poppins', sans-serif;
+}
