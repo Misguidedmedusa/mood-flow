@@ -1,11 +1,53 @@
+/* FONT */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* BODY */
 body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+
+  background-image: url("./background.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
 }
 
+/* MAIN CARD */
+.tracker-container {
+  background: rgba(255, 220, 235, 0.75);
+  backdrop-filter: blur(18px);
+  padding: 25px;
+  margin: 60px auto;
+  width: 350px;
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(255, 182, 193, 0.3);
+  text-align: center;
+}
 
-/* SLIDER STYLE */
+/* HEADINGS */
+h2 {
+  font-weight: 600;
+  font-size: 28px;
+  letter-spacing: 1px;
+  color: #c06c84;
+}
+
+h3 {
+  font-weight: 500;
+  font-size: 20px;
+  color: #444;
+  margin-top: 20px;
+}
+
+/* LABELS */
+label {
+  display: block;
+  font-size: 14px;
+  color: #555;
+  margin-top: 12px;
+}
+
+/* SLIDER */
 input[type="range"] {
   -webkit-appearance: none;
   width: 100%;
@@ -15,13 +57,6 @@ input[type="range"] {
   background: #ddd;
 }
 
-/* Track (Chrome fix) */
-input[type="range"]::-webkit-slider-runnable-track {
-  height: 10px;
-  border-radius: 10px;
-}
-
-/* Thumb */
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   height: 18px;
@@ -33,69 +68,34 @@ input[type="range"]::-webkit-slider-thumb {
   cursor: pointer;
 }
 
+/* BUTTON */
 button {
   background-color: #f8c8dc;
   border: none;
   padding: 12px 18px;
   border-radius: 12px;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }
 
 button:hover {
   background-color: #f4a6c1;
 }
 
+/* ENTRIES */
 li {
   list-style: none;
-  background: #ffffffaa;
-  margin: 8px;
-  padding: 10px;
-  border-radius: 10px;
-}
-body {
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-
-  background-image: url("./background.png");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
-
-.tracker-container {
-  background: rgba(255, 220, 235, 0.7);
-  backdrop-filter: blur(15px);
-  padding: 25px;
-  margin: 60px auto;
-  width: 350px;
-  border-radius: 25px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-  text-align: center;
-}
-
-h2 {
-  font-weight: 600;
-}
-
-h3 {
-  font-weight: 500;
-}
-
-label {
-  display: block;
-  margin-top: 15px;
-}
-
-li {
-  list-style: none;
-  background: rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.7);
   margin: 10px;
   padding: 12px;
   border-radius: 12px;
   position: relative;
+  font-size: 14px;
+  line-height: 1.6;
 }
 
+/* DELETE BUTTON */
 .delete-btn {
   position: absolute;
   right: 10px;
@@ -111,60 +111,20 @@ li {
 .delete-btn:hover {
   background: #ff4757;
 }
-h1, h2, h3, label, button {
-  font-family: 'Poppins', sans-serif;
-}
-/* Main heading */
-h2 {
-  font-weight: 600;
-  font-size: 28px;
-  letter-spacing: 1px;
-  color: #333;
-}
 
-/* Section headings */
-h3 {
-  font-weight: 500;
-  font-size: 20px;
-  color: #444;
-  margin-top: 20px;
-}
-
-/* Labels */
-label {
-  font-size: 14px;
-  color: #555;
-  margin-top: 12px;
-}
-
-/* Buttons */
-button {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-}
-
-/* Entries text */
-li {
-  font-size: 14px;
-  line-height: 1.6;
-}
+/* ANALYSIS BUTTON */
 #analysisBtn {
   margin-top: 15px;
   background-color: #ffd6e7;
-  border: none;
-  padding: 10px 15px;
-  border-radius: 12px;
-  cursor: pointer;
-  font-weight: 500;
 }
 
 #analysisBtn:hover {
   background-color: #ffb3d1;
 }
 
+/* ANALYSIS BOX */
 #analysisContainer {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.75);
   margin-top: 15px;
   padding: 15px;
   border-radius: 15px;
@@ -174,5 +134,5 @@ li {
 #analysisBox {
   font-size: 14px;
   line-height: 1.6;
-  white-space: pre-line; /* keeps formatting clean */
+  white-space: pre-line;
 }
