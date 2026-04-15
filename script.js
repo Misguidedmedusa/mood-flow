@@ -88,3 +88,4 @@ function displayData() {
 
 // Load on start
 displayData();
+document.getElementById("saveBtn").addEventListener("click", saveData);
