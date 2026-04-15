@@ -13,7 +13,9 @@ function setSliderColor(slider) {
   const value = slider.value;
   const color = vibgyorColors[value];
 
-  slider.style.background = `linear-gradient(to right, ${color} ${value * 14}%, #ddd ${value * 14}%)`;
+  const percent = (value - 1) / 6 * 100;
+
+  slider.style.background = `linear-gradient(to right, ${color} ${percent}%, #ddd ${percent}%)`;
 }
 
 // Cycle phase
