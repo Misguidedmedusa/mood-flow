@@ -1,36 +1,53 @@
 body {
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #ffe6f0, #e6f7ff);
-  background-image: url('https://www.transparenttextures.com/patterns/floral.png');
-  min-height: 100vh;
   margin: 0;
+
+  background-image: url("background.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .tracker-container {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
   padding: 25px;
-  margin: 50px auto;
+  margin: 60px auto;
   width: 350px;
   border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
   text-align: center;
 }
 
+/* SLIDER STYLE */
 input[type="range"] {
   width: 100%;
-  margin-top: 10px;
-  height: 8px;
-  border-radius: 5px;
+  height: 10px;
+  border-radius: 10px;
   outline: none;
+  appearance: none;
+  background: #ccc;
+  transition: background 0.3s ease;
+}
+
+/* Thumb */
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid #999;
+  cursor: pointer;
 }
 
 button {
   background-color: #f8c8dc;
   border: none;
-  padding: 10px 15px;
-  border-radius: 10px;
+  padding: 12px 18px;
+  border-radius: 12px;
   cursor: pointer;
+  font-weight: bold;
 }
 
 button:hover {
