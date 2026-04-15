@@ -149,3 +149,30 @@ li {
   font-size: 14px;
   line-height: 1.6;
 }
+#analysisBtn {
+  margin-top: 15px;
+  background-color: #ffd6e7;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+#analysisBtn:hover {
+  background-color: #ffb3d1;
+}
+
+#analysisContainer {
+  background: rgba(255, 255, 255, 0.7);
+  margin-top: 15px;
+  padding: 15px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+#analysisBox {
+  font-size: 14px;
+  line-height: 1.6;
+  white-space: pre-line; /* keeps formatting clean */
+}
